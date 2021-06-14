@@ -13,10 +13,9 @@ You need to solve the crime, and fill out the following info in answers.txt (SPO
 ### One of the many queries looks something like this:
 ![image](https://user-images.githubusercontent.com/58123635/121844984-c9fd5580-ccb2-11eb-9a96-fd422bf1cfb8.png)
 
-## SQL query looks difficult to the eyes, but actually are quite easy and intuitive to write.
+#### SQL query looks difficult to the eyes, but actually are quite easy and intuitive to write.
 
-### Some of my own notes, while watching *my favorite* Week7 lecture [video](https://cs50.harvard.edu/x/2021/weeks/7/)
-
+## Some of my own notes, while watching *my favorite* Week7 lecture [video](https://cs50.harvard.edu/x/2021/weeks/7/)
 
 CSV  (static unchanging data) = flat-file database (spreadsheet): convenient; but querying is inefficient , especially when db get large
 
@@ -45,8 +44,7 @@ EXAMPLES:
 - SELECT UPPER(TRIM(title)), COUNT(title) FROM shows GROUP BY UPPER(TRIM((title)) ORDER BY COUNT(title) DESC/ASC LIMIT 10;
 - INSERT INTO shows (Timestamp, title, genres) VALUES("now", "The Muppet Show", "Comedy, Musical");
 
-
-NOTE:
+#### NOTE:
 - PRIMARY KEY: a column in a table that uniquely identifies every row (shows col)
 -- V.S. Unique key: Primary key will not accept NULL values whereas Unique key can accept one NULL value. (a unique column might have rows with NULL values). A table can have only primary key (column), and multiple unique keys (columns).
 
@@ -56,13 +54,13 @@ INDEX: helps achieve Logarithmic search time (using a B-tree: wide, and short i.
 
 e.g. CREATE INDEX name ON table (column,...);
 
-JOIN: helps extract info from multiple tables. The tutorial [video](https://cs50.harvard.edu/x/2021/shorts/sql/) explains JOIN usage pretty well.
+#### JOIN: helps extract info from multiple tables. The tutorial [video](https://cs50.harvard.edu/x/2021/shorts/sql/) explains JOIN usage pretty well.
 
 Watchout for SQL Injection ATTACK: dont use Python f-string inside db.execute commands. For example:
 
 - db.execute(f"... {username} {password}") >> ignore password check = BAD :(
 - Use placeholder (?) db.execute(" username = ? AND password = ?", username, password) >> this is good & safe :)
 
-And final note: With large database, and many clients making requests at the same time, race condition can happen, a nice term for this is: *failed whale* (e.g. Kim Kadashian's Egg photo network congestion)!
+### And final note: With large database, and many clients making requests at the same time, race condition can happen, a nice term for this is: *failed whale* (e.g. Kim Kadashian's Egg photo network congestion)!
 
-The solution: many databases provide atomicity (binary action: complete/not complete) & isolation (actions are executed, as if, sequentially) via TRANSACTION.
+### The solution: many databases provide atomicity (binary action: complete/not complete) & isolation (actions are executed, as if, sequentially) via TRANSACTION.
